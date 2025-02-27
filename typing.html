@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Animation Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 200vh; /* Increase height to enable scrolling */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .typing {
+        font-family: monospace; /* Change font as desired */
+        white-space: nowrap; /* Prevent line breaks */
+        overflow: hidden; /* Hide overflow */
+        font-size: 24px; /* Adjust font size */
+        margin: 20px; /* Margin for spacing */
+        color: transparent; /* Start with invisible text */
+        transition: color 0.5s; /* Smooth transition for text visibility */
+        display: inline-block; /* Ensures correct positioning */
+      }
+
+      .typing.visible {
+        color: black; /* Set text color to black when it becomes visible */
+      }
+
+      .cursor {
+        color: black; /* Cursor color */
+        animation: blink 0.75s step-end infinite; /* Blinking cursor effect */
+        display: inline; /* Keep cursor inline */
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0; /* Cursor blinks */
+        }
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="typing">This is a typing animation effect!</div>
+    <div class="typing">Another line of text that will type out!</div>
+    <div class="typing">Watch as these sentences appear letter by letter!</div>
+
+    <script>
+      jQuery(document).ready(function () {
+        function checkTypingVisible() {
+          jQuery(".typing").each(function () {
+            const widgetTop = jQuery(this).offset().top;
+            const widgetBottom = widgetTop + jQuery(this).outerHeight();
+            const scrollPos = jQuery(window).scrollTop();
+            const windowHeight = jQuery(window).height();
+
+            // Check if any part of the element is visible in the viewport
+            if (
+              widgetBottom > scrollPos &&
+              widgetTop < scrollPos + windowHeight
+            ) {
+              // Only start typing if it hasn't been animated yet
+              if (!jQuery(this).hasClass("visible")) {
+                startTypingAnimation(jQuery(this));
+              }
+            }
+          });
+        }
+
+        function startTypingAnimation(element) {
+          const text = element.text(); // Get the text from the element
+          element.text(""); // Clear the text
+          element.addClass("visible"); // Make text color visible
+          let index = 0;
+
+          // Create cursor element and add it to the element
+          const textData = jQuery("<span></span>");
+          const cursor = jQuery('<span class="cursor">|</span>');
+          element.append(textData);
+          element.append(cursor); // Append the cursor
+
+          function type() {
+            if (index < text.length) {
+              textData.append(text.charAt(index)); // Append one character at a time
+              index++;
+              setTimeout(type, 100); // Adjust speed here (100ms between characters)
+            } else {
+              // Hide the cursor after typing is complete
+              cursor.remove(); // Remove cursor after typing
+            }
+          }
+          type(); // Start the typing animation
+        }
+
+        // Check on page load
+        checkTypingVisible();
+
+        // Check on scroll
+        jQuery(window).on("scroll", function () {
+          checkTypingVisible();
+        });
+      });
+    </script>
+  </body>
+</html>

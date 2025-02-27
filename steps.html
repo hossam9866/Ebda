@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Steps</title>
+    <style>
+      .unique-progress-container {
+        position: relative;
+        width: 1071px;
+        margin: 50px auto 0px auto;
+      }
+      .unique-progress-svg {
+        width: 100%;
+        height: 100%;
+      }
+      .step-inter {
+        width: 100%;
+      }
+      .step-inter svg {
+        width: 50px;
+      }
+      .unique-step {
+        position: absolute;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .unique-step .unique-number {
+        font-size: 90px; /* Use viewport width for responsive scaling */
+        color: rgba(23, 192, 187, 0.2);
+        margin: 0;
+        transform: translateX(-20px);
+      }
+      .step-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
+      }
+      .unique-step .unique-title {
+        font-weight: bold;
+        margin: 0 0 20px 0;
+        font-size: 1.2vw; /* Use viewport width for responsive scaling */
+        color: var(--black, #181414);
+        font-family: "Poppins";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%; /* 38.4px */
+        text-transform: uppercase;
+      }
+      .unique-step .unique-description {
+        color: var(--gray_bold, #696969);
+        font-family: "Inter";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 28.8px */
+      }
+      /* Positioning the steps */
+      .unique-step1 {
+        top: 80%;
+        left: 1%;
+      }
+
+      .unique-step2 {
+        top: 49%;
+        left: 41%;
+      }
+      .unique-step3 {
+        top: -6%;
+        right: -8%;
+      }
+      @media (max-width: 1100px) {
+        .unique-progress-container {
+          width: 700px;
+        }
+        .unique-step {
+        }
+        .unique-step .unique-number {
+          font-size: 40px;
+        }
+        .unique-step .unique-title {
+          font-size: 18px;
+          margin: 0 0 10px 0;
+        }
+        .unique-step .unique-description {
+          font-size: 12px;
+        }
+        .step-inter svg {
+          width: 40px;
+        }
+        .unique-step1 {
+          top: 76%;
+          left: 1%;
+        }
+        .unique-step2 {
+          top: 44%;
+          left: 38%;
+        }
+        .unique-step3 {
+          top: -10%;
+          right: -8%;
+        }
+      }
+      @media (max-width: 800px) {
+        .unique-progress-container {
+          width: 350px;
+        }
+        .unique-step {
+        }
+        .unique-step .unique-number {
+          font-size: 35px;
+        }
+        .unique-step .unique-title {
+          font-size: 12px;
+          margin: 0 0 0px 0;
+        }
+        .unique-step .unique-description {
+          font-size: 8px;
+        }
+        .step-inter svg {
+          width: 20px;
+        }
+        .unique-step1 {
+          top: 66%;
+          left: -7%;
+        }
+        .unique-step2 {
+          top: 34%;
+          left: 28%;
+        }
+        .unique-step3 {
+          top: -20%;
+          right: -16%;
+        }
+      }
+      @media (max-width: 450px) {
+        .unique-progress-container {
+          width: 250px;
+        }
+        .unique-step {
+        }
+        .unique-step .unique-number {
+          font-size: 35px;
+        }
+        .unique-step .unique-title {
+          font-size: 10px;
+          margin: 0 0 0px 0;
+        }
+        .unique-step .unique-description {
+          font-size: 6px;
+        }
+        .step-inter svg {
+          width: 20px;
+        }
+        .unique-step1 {
+          top: 55%;
+          left: -14%;
+        }
+        .unique-step2 {
+          top: 23%;
+          left: 28%;
+        }
+        .unique-step3 {
+          top: -27%;
+          right: -20%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="unique-progress-container">
+      <!-- SVG Path -->
+      <svg
+        class="unique-progress-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="1071"
+        height="449"
+        viewBox="0 0 1071 449"
+        fill="none">
+        <g filter="url(#filter0_d)">
+          <path
+            d="M27 310.797C75 345.797 186.8 411.797 250 395.797C329 375.797 348.5 272.797 470.5 248.797C592.5 224.797 682 308.297 776.5 187.797C871 67.2971 917 -11.7029 1044 5.29715"
+            stroke="#17C0BB"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </g>
+        <defs>
+          <filter
+            id="filter0_d"
+            x="0.5"
+            y="0.500488"
+            width="1070"
+            height="448.255"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha" />
+            <feOffset dy="24" />
+            <feGaussianBlur stdDeviation="12" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0.215686 0 0 0 0 0.203922 0 0 0 0 0.662745 0 0 0 0.3 0" />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape" />
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- Step 1 -->
+      <div class="unique-step unique-step1">
+        <div class="step-inter">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none">
+            <rect width="64" height="64" rx="20" fill="white" />
+            <rect x="20" y="20" width="23" height="23" rx="10" fill="#C4C4C4" />
+          </svg>
+        </div>
+        <div class="step-data">
+          <p class="unique-title">FREE CONSULTATION</p>
+          <p class="unique-description">We meet to understand your needs.</p>
+        </div>
+        <p class="unique-number">01</p>
+      </div>
+      <!-- Step 2 -->
+      <div class="unique-step unique-step2">
+        <div class="step-inter">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none">
+            <rect width="64" height="64" rx="20" fill="white" />
+            <rect x="20" y="20" width="23" height="23" rx="10" fill="#C4C4C4" />
+          </svg>
+        </div>
+        <div class="step-data">
+          <p class="unique-title">CONTRACT SIGNING</p>
+          <p class="unique-description">Sign our agreement.</p>
+        </div>
+        <p class="unique-number">02</p>
+      </div>
+      <!-- Step 3 -->
+      <div class="unique-step unique-step3">
+        <div class="step-inter">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 64 64"
+            fill="none">
+            <rect width="64" height="64" rx="20" fill="white" />
+            <rect x="20" y="20" width="23" height="23" rx="10" fill="#C4C4C4" />
+          </svg>
+        </div>
+        <div class="step-data">
+          <p class="unique-title">BUSINESS SETUP</p>
+          <p class="unique-description">Receive our support letter.</p>
+        </div>
+        <p class="unique-number">03</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circle Progress</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+    <style>
+      body {
+        background-color: rgb(32, 67, 99);
+        height: 2000px; /* Added height for scroll */
+      }
+      .circle-progress {
+        width: 109px;
+        height: 109px;
+        position: relative;
+        display: inline-block;
+        margin: 20px;
+        opacity: 0; /* Hidden initially */
+        transform: scale(0); /* Scale down initially */
+        transition: opacity 0.6s, transform 0.6s;
+      }
+      .circle-progress.active {
+        opacity: 1;
+        transform: scale(1); /* Scale up when visible */
+      }
+      .circle-progress canvas {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .circle-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 1000px"></div>
+    <div class="circle-progress" data-percent="0.75">750%</div>
+    <div class="circle-progress" data-percent="0.50">50%</div>
+    <div class="circle-progress" data-percent="0.90">90%</div>
+
+    <script>
+      $(document).ready(function () {
+        // Function to check if element is in viewport
+        function isElementInViewport(el) {
+          var rect = el.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        // Initialize progress animation when element is visible
+        function animateCircles() {
+          $(".circle-progress").each(function () {
+            if (isElementInViewport(this) && !$(this).hasClass("active")) {
+              $(this).addClass("active"); // Add active class to trigger animation
+
+              var percent = $(this).data("percent");
+              var text = $(this).text();
+              $(this).text(""); // Clear text before animation
+
+              $(this).circleProgress({
+                value: percent,
+                size: 150,
+                emptyFill: "rgba(255, 255, 255, 0.10)",
+                startAngle: -Math.PI / 2, // Start from top center
+                fill: {
+                  color: "white",
+                },
+              });
+
+              // Append the inner text to the center of the circle
+              $(this).append('<div class="circle-text">' + text + "</div>");
+            }
+          });
+        }
+
+        // Trigger animation on scroll
+        $(window).on("scroll", function () {
+          animateCircles();
+        });
+
+        // Check immediately if the element is already in view (without scrolling)
+        animateCircles();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curved Line Under Text</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+      body {
+        background-color: #2c3e50; /* Dark background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        position: relative; /* For positioning the pseudo-element */
+      }
+      .text {
+        font-family: "Poppins", sans-serif;
+        font-size: 48px; /* Adjust font size */
+        color: #17c0bb; /* Text color */
+        position: relative; /* Ensure text is above the curve */
+        z-index: 1;
+      }
+      .curve {
+        position: absolute;
+        left: 50%;
+        bottom: -10px; /* Position it just below the text */
+        width: 150px; /* Width of the curve */
+        height: 20px; /* Height of the curve */
+        background: transparent; /* No background color */
+        border-top: 4px solid #17c0bb; /* Color of the curve */
+        border-radius: 50%; /* Create a curve */
+        transform: translateX(-50%); /* Center the curve */
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="animate__animated animate__bounce animate__delay-2s">hi</h1>
+  </body>
+</html>

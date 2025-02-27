@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Small QR Code Display</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #2c3e50, #4ca1af);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .qrcode-container {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        width: 120px;
+        height: 120px;
+        background: #fff;
+        border: 2px solid #4ca1af;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .qrcode-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      img {
+        width: 90%;
+        height: 90%;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        /* Tablet */
+        .qrcode-container {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* Mobile */
+        .qrcode-container {
+          width: 90px;
+          height: 90px;
+          bottom: 5px;
+          left: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="qrcode-container">
+      <img
+        src="https://ebda.com.sa/wp-content/uploads/2024/11/QR-code-services.png"
+        alt="QR Code" />
+    </div>
+  </body>
+</html>

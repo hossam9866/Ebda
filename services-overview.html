@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services Page</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f9;
+      }
+      .services-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        padding: 20px;
+        width: 100%;
+      }
+      .service-card {
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        cursor: pointer;
+        text-align: center;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+      .service-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .service-content {
+        padding: 15px;
+      }
+      .service-title {
+        font-size: 1.25rem;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .service-details {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 15px;
+      }
+      .service-btn {
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        display: inline-block;
+        transition: background-color 0.2s;
+      }
+      .service-btn:hover {
+        background-color: #0056b3;
+      }
+      @media (max-width: 600px) {
+        .service-card img {
+          height: 120px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="services-container">
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service1'">
+        <img src="https://via.placeholder.com/300x200" alt="Service 1" />
+        <div class="service-content">
+          <h3 class="service-title">Service 1</h3>
+          <p class="service-details">Description of Service 1 goes here.</p>
+          <a href="https://example.com/service1" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service2'">
+        <img src="https://via.placeholder.com/300x250" alt="Service 2" />
+        <div class="service-content">
+          <h3 class="service-title">Service 2</h3>
+          <p class="service-details">Description of Service 2 goes here.</p>
+          <a href="https://example.com/service2" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service3'">
+        <img src="https://via.placeholder.com/300x180" alt="Service 3" />
+        <div class="service-content">
+          <h3 class="service-title">Service 3</h3>
+          <p class="service-details">Description of Service 3 goes here.</p>
+          <a href="https://example.com/service3" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service4'">
+        <img src="https://via.placeholder.com/300x200" alt="Service 4" />
+        <div class="service-content">
+          <h3 class="service-title">Service 4</h3>
+          <p class="service-details">Description of Service 4 goes here.</p>
+          <a href="https://example.com/service4" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service5'">
+        <img src="https://via.placeholder.com/300x230" alt="Service 5" />
+        <div class="service-content">
+          <h3 class="service-title">Service 5</h3>
+          <p class="service-details">Description of Service 5 goes here.</p>
+          <a href="https://example.com/service5" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service6'">
+        <img src="https://via.placeholder.com/300x210" alt="Service 6" />
+        <div class="service-content">
+          <h3 class="service-title">Service 6</h3>
+          <p class="service-details">Description of Service 6 goes here.</p>
+          <a href="https://example.com/service6" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+      <div
+        class="service-card"
+        onclick="location.href='https://example.com/service7'">
+        <img src="https://via.placeholder.com/300x190" alt="Service 7" />
+        <div class="service-content">
+          <h3 class="service-title">Service 7</h3>
+          <p class="service-details">Description of Service 7 goes here.</p>
+          <a href="https://example.com/service7" class="service-btn"
+            >Learn More</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

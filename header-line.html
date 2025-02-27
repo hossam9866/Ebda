@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .counter {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 1000px">Scroll down to see the counter</div>
+
+    <span class="counter">19+</span>
+    <span class="counter">25%</span>
+    <span class="counter">100</span>
+
+    <script>
+      $(document).ready(function () {
+        function isInView(elem) {
+          var elementTop = $(elem).offset().top;
+          var elementBottom = elementTop + $(elem).outerHeight();
+          var viewportTop = $(window).scrollTop();
+          var viewportBottom = viewportTop + $(window).height();
+          return elementBottom > viewportTop && elementTop < viewportBottom;
+        }
+
+        function animateCounter($element) {
+          var originalText = $element.text();
+          var targetNumber = parseInt(originalText, 10);
+          var suffix = originalText.replace(/[0-9]/g, ""); // Extract non-numeric part
+
+          $({ counter: 0 }).animate(
+            { counter: targetNumber },
+            {
+              duration: 2000, // Adjusted duration if needed
+              easing: "swing",
+              step: function (now) {
+                // Concatenate number and suffix without a space
+                $element.text(Math.ceil(now) + suffix);
+              },
+            }
+          );
+        }
+
+        $(window).on("scroll", function () {
+          $(".counter").each(function () {
+            if (isInView(this) && !$(this).hasClass("counted")) {
+              $(this).addClass("counted"); // To avoid re-animating
+              animateCounter($(this));
+            }
+          });
+        });
+
+        // Initial check in case the element is already in view
+        $(window).trigger("scroll");
+      });
+    </script>
+  </body>
+</html>

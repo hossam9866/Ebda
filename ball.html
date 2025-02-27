@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .services-c {
+        padding-left: 80px; /* Left padding of 80px */
+        position: relative; /* Positioning context for the pseudo-elements */
+      }
+
+      .services-c::before {
+        content: ""; /* Required to display the pseudo-element */
+        width: 20px; /* Circle width */
+        height: 20px; /* Circle height */
+        background-color: #17c0bb; /* Circle color */
+        border-radius: 50%; /* Make it a circle */
+        position: absolute; /* Absolute positioning to place it relative to .services-c */
+        left: 0; /* Align it to the left */
+        top: 0; /* Align it to the top */
+      }
+
+      .services-c::after {
+        content: ""; /* Required to display the pseudo-element */
+        width: 1px; /* Line thickness */
+        height: 50px; /* Line height */
+        background-color: #c4c4c4; /* Line color */
+        position: absolute; /* Absolute positioning to place it relative to .services-c */
+        left: 9px; /* Adjust to center under the circle */
+        top: 20px; /* Position it below the circle */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="services-c">
+      <!-- Your content here -->
+      Service Item
+    </div>
+  </body>
+</html>

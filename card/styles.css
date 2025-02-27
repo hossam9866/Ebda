@@ -1,0 +1,140 @@
+a {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 16px;
+}
+
+.card-header {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.card-header img {
+  transform: rotate(180deg);
+}
+
+.card-header i {
+  background-color: #e6f0f9;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #17171d;
+  text-decoration: none;
+  transition: 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-property: color, background-color;
+}
+
+.card-header a {
+  padding-left: 10px;
+  font-size: 14px;
+  color: #17171d;
+  text-decoration: none;
+  transition: 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-property: color;
+  margin: 0;
+}
+.card-header:hover i {
+  background-color: rgb(71, 71, 180);
+  color: white;
+  cursor: pointer;
+}
+.card-header:hover a {
+  color: rgb(71, 71, 180);
+  cursor: pointer;
+}
+
+.card-body {
+}
+
+.card-title {
+  display: block;
+  font-weight: 600;
+  color: #17171d;
+  font-size: 18px;
+  margin-top: 30px;
+  transition: 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-property: color;
+  text-decoration: none;
+}
+.card-title:hover {
+  color: rgb(71, 71, 180);
+  cursor: pointer;
+}
+
+.details {
+  color: #3b3b3b;
+  font-size: 12px;
+}
+
+.card-location {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.card-date {
+  color: #999;
+  font-size: 14px;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-footer span {
+  color: rgba(23, 192, 187, 0.8);
+  font-size: 14px;
+}
+
+.image-holder {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  background-color: rgba(66, 141, 139, 0.192);
+  border-radius: 20px;
+}
+.image-holder:hover {
+  cursor: pointer;
+}
+
+.card-footer img {
+  width: 100%;
+}
+
+/*anitmation*/
+
+.card {
+  border-radius: 20px;
+  transition: box-shadow 0.5s ease-in-out, transform 0.3s ease-in-out;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  animation: card-shadow 2s infinite alternate ease-in-out; /* Animation */
+}
+
+@keyframes card-shadow {
+  0% {
+    box-shadow: 0 0 20px rgba(23, 192, 187, 0.8); /* #17C0BB */
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(20, 27, 77, 0.8); /* #141B4D */
+  }
+}

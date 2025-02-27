@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Animation on Scroll</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        height: 200vh; /* To create a scrollable page */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align items at the start */
+        margin: 0;
+      }
+
+      .svg-container {
+        position: relative;
+        width: 99px; /* Set width based on your SVG */
+        height: 132px; /* Set height based on your SVG */
+        margin-top: 100vh; /* Position the SVG lower for scroll effect */
+      }
+
+      .svg-bg {
+        opacity: 0; /* Initially hidden */
+        transition: opacity 500ms ease; /* Animation effect */
+        position: absolute; /* Ensure it overlays the stroke */
+        top: 0;
+        left: 0;
+      }
+
+      .svg-bg.visible {
+        opacity: 1; /* Fade in when visible */
+      }
+
+      .svg-strock {
+        position: absolute; /* Keep it on top of bg */
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="svg-container">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="99"
+        height="132"
+        viewBox="0 0 99 132"
+        fill="none">
+        <path
+          class="svg-bg"
+          d="M57.86 42.23C57.68 42.4 54.61 45.85 55.28 46.03C65.48 48.87 75.2 52.85 84.46 57.97C62.22 77.73 39.97 97.48 17.72 117.23C16.15 118.63 14.57 120.03 13 121.42C25.99 100.81 38.71 80.03 51.16 59.08C51.34 58.84 51.38 58.58 51.27 58.31C44.66 54.9 38.11 51.39 31.57 47.87C50.62 35.52 69.68 23.17 88.74 10.81C90.7 9.54 92.66 8.27 94.62 7C83.73 20.15 70.36 30.6 57.87 42.23H57.86Z"
+          fill="#F5AC00" />
+        <path
+          class="svg-strock"
+          d="M18.7301 54.1497C22.5901 56.2297 26.4601 58.2997 30.3401 60.3597C32.8301 61.6797 36.8201 62.9097 38.8501 64.8497C40.6201 66.5497 38.9101 67.9897 37.7201 69.9797C36.1901 72.5497 34.6501 75.1097 33.1101 77.6797C22.4301 95.4197 11.5501 113.03 0.480145 130.52C-1.23986 133.24 2.15014 131.01 2.99014 130.26C26.7501 109.16 50.5101 88.0697 74.2701 66.9697C77.6101 63.9997 80.9602 61.0297 84.3001 58.0597C84.4301 57.9497 88.6301 53.9397 87.7601 53.4497C78.1801 48.0497 68.1001 43.8797 57.5101 40.9297L54.9301 44.7297C69.8101 30.8797 85.6001 18.5197 97.9401 2.16969C98.7101 1.14969 99.8001 -0.960306 97.5701 0.479694C76.1101 14.3897 54.6501 28.3097 33.1901 42.2197C30.0501 44.2497 26.9201 46.2897 23.7801 48.3197C22.2201 49.3297 19.9701 50.9897 19.2101 52.7497C18.7001 53.9297 18.5001 54.7597 20.1301 53.6997C41.5901 39.7897 63.0501 25.8697 84.5101 11.9597C87.6501 9.92969 90.7801 7.88969 93.9201 5.85969L93.5501 4.16969C82.1601 19.2497 67.3601 30.5897 53.6301 43.3797C53.4501 43.5497 50.3801 46.9997 51.0501 47.1797C61.6401 50.1297 71.7201 54.2997 81.3001 59.6997L84.7601 55.0897C61.0001 76.1897 37.2401 97.2797 13.4801 118.38C10.1401 121.35 6.79014 124.32 3.45014 127.29L5.96014 127.03C19.9201 104.96 33.5701 82.6897 46.9101 60.2397C47.0901 59.9997 47.1301 59.7397 47.0201 59.4697C39.6901 55.6897 32.4301 51.7797 25.1701 47.8797C23.3701 46.9097 18.2001 53.8697 18.7101 54.1397L18.7301 54.1497Z"
+          fill="black" />
+      </svg>
+    </div>
+
+    <script>
+      jQuery(document).ready(function () {
+        // Initially hide the background
+        $(".svg-bg").hide();
+
+        // Function to check if the SVG is in the viewport
+        function checkIfVisible() {
+          const svgContainer = $(".svg-container");
+          const svgPosition = svgContainer.offset().top;
+          const windowHeight = $(window).height();
+          const scrollPosition = $(window).scrollTop();
+
+          if (scrollPosition + windowHeight > svgPosition) {
+            // Fade in background when visible
+            if (!$(".svg-bg").hasClass("visible")) {
+              $(".svg-bg").fadeIn(500).addClass("visible"); // Show background with animation
+            }
+          }
+        }
+
+        // Check visibility on scroll
+        $(window).on("scroll", function () {
+          checkIfVisible();
+        });
+
+        // Initial check in case it's already visible
+        checkIfVisible();
+      });
+    </script>
+  </body>
+</html>

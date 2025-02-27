@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Draw and Fill on Scroll</title>
+    <style>
+      /* Basic page styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        height: 200vh; /* Make the page taller to allow scrolling */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* SVG styling for animate-svg class */
+      .animate-svg path {
+        stroke: black; /* Initial color for drawing */
+        stroke-width: 2;
+        fill: none; /* No fill at the start */
+        stroke-dasharray: 1000; /* Large number to hide the path */
+        stroke-dashoffset: 1000; /* Start with offset to hide the path */
+        opacity: 0; /* Initially hidden */
+      }
+
+      /* Animation using keyframes */
+      .animate-svg.drawn path {
+        animation: draw 2s ease forwards, fill-opacity 1s ease forwards 2s; /* Delayed fill animation with opacity */
+        opacity: 1; /* Make visible when drawn */
+      }
+
+      /* Keyframes to animate drawing */
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0; /* Draws the path */
+        }
+      }
+
+      /* Keyframes to fill with opacity */
+      @keyframes fill-opacity {
+        to {
+          fill: black; /* Fills the path after drawing */
+          opacity: 1; /* Makes the fill fully opaque */
+        }
+      }
+
+      /* Content before the SVG */
+      .content {
+        margin-top: 500px;
+        font-size: 1.5em;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <p>Scroll down to see the SVG animation</p>
+      </div>
+
+      <!-- SVG graphic with animate-svg class -->
+      <svg
+        class="animate-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="340"
+        height="281"
+        viewBox="0 0 340 281"
+        fill="none">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M269.447 59.5959C292.646 52.385 322.77 40.7747 331.839 9.11945V9.10291C332.648 6.29132 335.397 3.24817 337.221 1.62732C337.255 1.5979 337.294 1.56293 337.339 1.52344C338.146 0.808292 340.621 -1.38366 339.854 1.29657C330.721 33.1503 304.773 52.5504 281.098 63.0029C253.364 75.2416 224.486 78.2186 195.352 78.9132C191.488 79.004 187.614 79.0693 183.733 79.1348C155.088 79.6179 126.1 80.1068 98.5076 90.8708C69.8101 102.068 46.5977 124.974 32.4802 159.308C20.033 189.61 15.5392 224.61 20.2913 258.352C21.0937 256.416 21.7466 254.702 22.1152 253.413C22.6293 251.617 25.0431 249.917 26.6392 248.793L26.6454 248.789C26.8127 248.671 30.9311 246.102 30.5835 247.333C29.0263 252.781 24.1454 266.135 20.8382 271.244C20.5294 272.347 13.1678 281.731 12.3699 280.5C10.4007 277.487 8.45409 273.755 6.5075 270.023C4.56096 266.291 2.61443 262.558 0.645376 259.546C-0.590159 257.651 0.259268 248.189 0.645376 248.788C2.61144 251.802 6.64971 255.822 10.6895 259.843C10.7662 259.919 10.843 259.995 10.9197 260.072C7.49944 225.437 13.7434 190.159 27.573 160.02C40.1106 132.698 58.5314 109.047 80.2408 93.8809C108.373 74.2162 140.976 70.1146 172.435 69.0065C178.7 68.7861 184.978 68.6681 191.26 68.55C217.502 68.0568 243.804 67.5625 269.447 59.5959Z"
+          fill="black" />
+      </svg>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        function checkSVGVisible() {
+          $(".animate-svg").each(function () {
+            const svgTop = $(this).offset().top;
+            const svgBottom = svgTop + $(this).outerHeight();
+            const scrollPos = $(window).scrollTop();
+            const windowHeight = $(window).height();
+
+            // Check if any part of the SVG is visible in the viewport
+            if (svgBottom > scrollPos && svgTop < scrollPos + windowHeight) {
+              $(this).addClass("drawn");
+            }
+          });
+        }
+
+        // Check on page load
+        checkSVGVisible();
+
+        // Check on scroll
+        $(window).on("scroll", function () {
+          checkSVGVisible();
+        });
+      });
+    </script>
+  </body>
+</html>

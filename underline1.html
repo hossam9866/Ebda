@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Line Drawing Animation</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* CSS for the curve-yellow element */
+      .curve-yellow {
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        width: 100%;
+        height: 14px;
+        background: transparent;
+        transform: translateX(-50%);
+        overflow: hidden;
+      }
+
+      /* Line-drawing effect using a pseudo-element */
+      .curve-yellow::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0; /* Start with 0 width */
+        border-top: 6px solid red;
+        border-radius: 100%;
+        transition: width 1s ease-in-out;
+      }
+
+      /* Animation for drawing the line */
+      .animate-border::after {
+        width: 100%; /* Full width to complete the line */
+      }
+
+      /* For demo purpose - page content and positioning */
+      .content {
+        height: 150vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .relative {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page Content to Scroll Through -->
+    <div class="content">
+      <h1>
+        Scroll
+        <span class="relative">
+          down
+          <div class="curve curve-yellow"></div
+        ></span>
+        down to see the line animation
+      </h1>
+    </div>
+
+    <!-- Curve Element with Line Animation -->
+
+    <script>
+      // jQuery and Intersection Observer to trigger animation
+      $(document).ready(function () {
+        const observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                $(entry.target).addClass("animate-border"); // Trigger the line drawing
+                observer.unobserve(entry.target); // Stop observing after animation is triggered
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        const curveYellow = document.querySelector(".curve");
+        if (curveYellow) {
+          observer.observe(curveYellow);
+        }
+      });
+    </script>
+  </body>
+</html>
