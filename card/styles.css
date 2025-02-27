@@ -20,8 +20,9 @@ a {
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
 }
-.card-header img {
+.card-header .ebda-icon {
   transform: rotate(180deg);
 }
 
